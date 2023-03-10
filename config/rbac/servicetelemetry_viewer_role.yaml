@@ -1,0 +1,27 @@
+# permissions for end users to view servicetelemetries.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: servicetelemetry-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: service-telemetry-operator
+    app.kubernetes.io/part-of: service-telemetry-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: servicetelemetry-viewer-role
+rules:
+- apiGroups:
+  - infra.watch
+  resources:
+  - servicetelemetries
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - infra.watch
+  resources:
+  - servicetelemetries/status
+  verbs:
+  - get

@@ -1,0 +1,47 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    alm-examples: '[]'
+    capabilities: Basic Install
+  name: service-telemetry-operator.v0.0.0
+  namespace: placeholder
+spec:
+  apiservicedefinitions: {}
+  customresourcedefinitions: {}
+  description: Service Telemetry Framework. Umbrella Operator for instantiating the
+    required dependencies and configuration of various components to build a Service
+    Telemetry platform for telco grade monitoring.
+  displayName: Service Telemetry Operator
+  icon:
+  - base64data: ""
+    mediatype: ""
+  install:
+    spec:
+      deployments: null
+    strategy: ""
+  installModes:
+  - supported: false
+    type: OwnNamespace
+  - supported: false
+    type: SingleNamespace
+  - supported: false
+    type: MultiNamespace
+  - supported: true
+    type: AllNamespaces
+  keywords:
+  - monitoring
+  - telemetry
+  - observability
+  - openstack
+  links:
+  - name: Service Telemetry Operator
+    url: https://service-telemetry-operator.domain
+  maintainers:
+  - email: cloudops@redhat.com
+    name: Red Hat CloudOps DFG
+  maturity: alpha
+  provider:
+    name: Red Hat
+    url: https://github.com/infrawatch/service-telemetry-operator
+  version: 0.0.0

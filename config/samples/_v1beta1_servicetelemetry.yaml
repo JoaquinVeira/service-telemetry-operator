@@ -1,0 +1,12 @@
+apiVersion: infra.watch/v1beta1
+kind: ServiceTelemetry
+metadata:
+  labels:
+    app.kubernetes.io/name: servicetelemetry
+    app.kubernetes.io/instance: servicetelemetry-sample
+    app.kubernetes.io/part-of: service-telemetry-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: service-telemetry-operator
+  name: servicetelemetry-sample
+spec:
+  # TODO(user): Add fields here
