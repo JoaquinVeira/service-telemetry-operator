@@ -42,23 +42,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Get operator-sdk image 0.19.4
-        run: curl --output operator-sdk -JL https://github.com/operator-framework/operator-sdk/releases/download/$RELEASE_VERSION/operator-sdk-$RELEASE_VERSION-x86_64-linux-gnu
-
-      - name: Make operator-sdk executable
-        run: chmod +x operator-sdk
-
-      - name: Move operator-sdk binary
-        run: sudo mv operator-sdk /usr/local/bin
-
-      - name: Create working directory
-        run: mkdir /tmp/bundle
-
-      - name: Generate bundle
-        run: WORKING_DIR=/tmp/bundle ./build/generate_bundle.sh
-
       - name: Verify image builds
-        run: docker build --tag infrawatch/service-telemetry-operator:latest --file build/Dockerfile .
+        run: make bundle bundle-build
 
   check-bundle-validation-scorecard:
     name: Validate the generated bundle and perform scorecard checks
