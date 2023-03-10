@@ -1,9 +1,0 @@
----
-# run STF CI setup in CRC (already provisioned)
-- hosts: localhost
-  gather_facts: no
-  connection: local
-  tasks:
-  - name: Run the STF CI system
-    import_role:
-        name: stf-run-ci
