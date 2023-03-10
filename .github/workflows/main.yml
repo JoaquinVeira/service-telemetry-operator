@@ -13,10 +13,10 @@ jobs:
         run: python -m pip install 'ansible <= 2.9'
 
       - name: Install operator_sdk.util dependency for Ansible role linting
-        run: ansible-galaxy collection install 'operator_sdk.util >= 0.4.0'
+        run: ansible-galaxy collection install 'operator_sdk.util'
 
       - name: Install ansible-lint
-        run: pip install 'ansible-lint < 6.0.0'
+        run: python -m pip install 'ansible-lint < 6.0.0'
 
       - name: Lint Ansible roles/servicetelemetry/ directory
         run: ${HOME}/.local/bin/ansible-lint roles/servicetelemetry
@@ -40,6 +40,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Get operator-sdk
+        run: make operator-sdk
+
+      - name: Update path for operator-sdk
+        run: echo "${GITHUB_WORKSPACE}/bin" >> $GITHUB_PATH
+
       - name: Verify image builds
         run: make bundle bundle-build
 
@@ -50,6 +56,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      - name: Get operator-sdk
+        run: make operator-sdk
+
+      - name: Update path for operator-sdk
+        run: echo "${GITHUB_WORKSPACE}/bin" >> $GITHUB_PATH
 
       # generate the bundle
       - name: Generate bundle
