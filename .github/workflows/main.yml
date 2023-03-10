@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Verify image builds
-        run: docker build --tag infrawatch/service-telemetry-operator:latest --file build/Dockerfile .
+        run: make docker-build IMG="infrawatch/service-telemetry-operator:latest"
 
   build-bundle-check:
     name: Build bundle check
